@@ -1,0 +1,7 @@
+C:\Users\Deivido-PC\Documents\MAIN_DATA\06\intelektikos pagrindai\project\inproject\inproject\bin\Debug\inproject.exe.config
+C:\Users\Deivido-PC\Documents\MAIN_DATA\06\intelektikos pagrindai\project\inproject\inproject\bin\Debug\inproject.exe
+C:\Users\Deivido-PC\Documents\MAIN_DATA\06\intelektikos pagrindai\project\inproject\inproject\bin\Debug\inproject.pdb
+C:\Users\Deivido-PC\Documents\MAIN_DATA\06\intelektikos pagrindai\project\inproject\inproject\obj\Debug\inproject.csprojAssemblyReference.cache
+C:\Users\Deivido-PC\Documents\MAIN_DATA\06\intelektikos pagrindai\project\inproject\inproject\obj\Debug\inproject.csproj.CoreCompileInputs.cache
+C:\Users\Deivido-PC\Documents\MAIN_DATA\06\intelektikos pagrindai\project\inproject\inproject\obj\Debug\inproject.exe
+C:\Users\Deivido-PC\Documents\MAIN_DATA\06\intelektikos pagrindai\project\inproject\inproject\obj\Debug\inproject.pdb
