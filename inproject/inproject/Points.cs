@@ -10,7 +10,6 @@ namespace inproject
     {
         private string _x_title;
         private string _y_title;
-        private int _gruop;
         private const int _default_quantity = 1000;
         private int Index = 0;
         public Coordinate[] Coo;
@@ -18,6 +17,7 @@ namespace inproject
         {
             public int X;
             public int Y;
+            public int Gruop;
         }
         public Points() { }
         public Points(string TitleX, string TitleY, int Quantity)
