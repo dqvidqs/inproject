@@ -10,6 +10,7 @@ namespace inproject
     {
         private class Student
         {
+            private string[] Row = new string[8];
             private string _gender;//gender
             private string _gruop;//race/ethnicity
             private string _parent_education;//parental level of education
@@ -17,12 +18,16 @@ namespace inproject
             private string _test;//test preparation course
             private int _math;//math score
             private int _reading;//reading score
-            private int _writing;//writing score
+            private int _writing;//writing score*/
             public Student(string DataString)
             {
                 try
                 {
                     string[] Row = DataString.Split(',');
+                    for (int i = 0; i < this.Row.Length; i++)
+                    {
+                        this.Row[i] = Row[i];
+                    }
                     this._gender = Row[0];
                     this._gruop = Row[1];
                     this._parent_education = Row[2];
@@ -36,6 +41,10 @@ namespace inproject
                 {
                     Console.WriteLine("Incorrect Data Line!");
                 }
+            }
+            public string GetRowByIndex(int i)
+            {
+                return this.Row[i];
             }
         }
         private Student[] Students;
@@ -53,7 +62,7 @@ namespace inproject
         }
         public bool Add(string Row)
         {
-            if(Quantity == Students.Length)
+            if (Quantity == Students.Length)
             {
                 Console.WriteLine("Overflow Data");
                 return false;
@@ -61,6 +70,14 @@ namespace inproject
             Students[Quantity] = new Student(Row);
             Quantity++;
             return true;
+        }
+        public string GetDataByIndex(int i, int y)
+        {
+            return Students[i].GetRowByIndex(y);
+        }
+        public int GetQuantity()
+        {
+            return Quantity;
         }
     }
 }

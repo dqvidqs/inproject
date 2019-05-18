@@ -28,7 +28,7 @@ namespace inproject
             {
                 case "load":
                     //Load(Command);
-                    Classification.Start();
+                    Classification.Train(Command);
                     break;
             }
             Options();

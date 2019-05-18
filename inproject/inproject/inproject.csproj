@@ -46,6 +46,7 @@
     <Compile Include="Classification.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="MetaData.cs" />
+    <Compile Include="Points.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
