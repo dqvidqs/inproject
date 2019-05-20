@@ -28,14 +28,16 @@ namespace inproject
             {
                 case "load":
                     //Load(Command);
-                    Classification.Train(Command);
+                    Classification Clas = new Classification();
+                    KNearest.Valid(Clas.Train(Command), Clas.GetTrainedIndexes());
                     break;
             }
             Options();
         }
         public static Data Read(int From, int To)
         {
-            Data Temp = new Data();
+            // Data Temp = new Data();
+            Data Temp = new Data(900);
             string[] Content = SplitContent();
             if(From == -1)
             {

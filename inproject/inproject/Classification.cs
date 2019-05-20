@@ -12,18 +12,18 @@ namespace inproject
         private static Points[] TrainPoints;
         private static int[,] TrainIndex;
         private static string[] Gruop;
-        public static void Train(string[] Command)
+        public Points[] Train(string[] Command)
         {
             //command: load [grupe] [klasifikuot,klasifikuot..]
             //pvz load 1 5 6 7
-            int size = SelectIndex(Command);
+            int Size = SelectIndex(Command);
             int gr = Convert.ToInt32(Command[1]);           
             MainData = Program.Read(1, 901);
             Gruop = GetGruops(gr);
-            TrainPoints = new Points[size];
-            for (int i = 0; i < size; i++)
+            TrainPoints = new Points[Size];
+            for (int i = 0; i < Size; i++)
             {
-                TrainPoints[i] = new Points(Convert.ToString(TrainIndex[i, 0]), Convert.ToString(TrainIndex[i, 1]));
+                TrainPoints[i] = new Points(Convert.ToString(TrainIndex[i, 0]), Convert.ToString(TrainIndex[i, 1]), 900);
                 //TrainPoints[i] = new Points();
                 for (int j = 0; j < MainData.GetQuantity(); j++)
                 {
@@ -31,11 +31,12 @@ namespace inproject
                         if (MainData.GetDataByIndex(j, gr) == Gruop[k]) {
                             TrainPoints[i].Coo[j].X = Convert.ToInt32(MainData.GetDataByIndex(j, TrainIndex[i, 0]));
                             TrainPoints[i].Coo[j].Y = Convert.ToInt32(MainData.GetDataByIndex(j, TrainIndex[i, 0]));
-                            TrainPoints[i].Coo[j].Gruop = k;
+                            TrainPoints[i].Coo[j].Gruop = Gruop[k];
                         }
                     }
                 }
             }
+            return TrainPoints;
         }
         private static int SelectIndex(string[] Command)
         {
@@ -81,6 +82,10 @@ namespace inproject
                 }
             }
             return gruop.ToArray();
+        }
+        public int[,] GetTrainedIndexes()
+        {
+            return TrainIndex;
         }
     }
 }
