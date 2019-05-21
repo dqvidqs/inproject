@@ -43,6 +43,16 @@ namespace inproject
                         KNearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), Convert.ToInt32(Command[1]));
                     }
                     break;
+                case "linear":
+                    if (Command.Length == 1)
+                    {
+                        LinearRegression.Start(6, 7);
+                    }
+                    if (Command.Length == 3)
+                    {
+                        LinearRegression.Start(Convert.ToInt32(Command[1]), Convert.ToInt32(Command[2]));
+                    }
+                    break;
             }
             Options();
         }

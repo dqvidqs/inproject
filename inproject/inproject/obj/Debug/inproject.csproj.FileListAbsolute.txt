@@ -12,3 +12,9 @@ C:\Users\Deividas\Desktop\inproject\inproject\obj\Debug\inproject.pdb
 C:\Users\Deividas\Desktop\inproject\inproject\bin\Debug\inproject.exe.config
 C:\Users\Deividas\Desktop\inproject\inproject\bin\Debug\inproject.exe
 C:\Users\Deividas\Desktop\inproject\inproject\bin\Debug\inproject.pdb
+C:\Users\Linas\Documents\inproject-master\inproject\inproject\bin\Debug\inproject.exe.config
+C:\Users\Linas\Documents\inproject-master\inproject\inproject\obj\Debug\inproject.exe
+C:\Users\Linas\Documents\inproject-master\inproject\inproject\obj\Debug\inproject.pdb
+C:\Users\Linas\Documents\inproject-master\inproject\inproject\bin\Debug\inproject.exe
+C:\Users\Linas\Documents\inproject-master\inproject\inproject\bin\Debug\inproject.pdb
+C:\Users\Linas\Documents\inproject-master\inproject\inproject\obj\Debug\inproject.csprojResolveAssemblyReference.cache
