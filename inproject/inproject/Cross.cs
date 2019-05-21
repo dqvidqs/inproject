@@ -11,9 +11,14 @@ namespace inproject
         private const int _default_parts = 10;
         private MetaData Meta;
         private int[] Indexes;
-        public Cross()
+        public Cross(MetaData Data)
         {
+            Meta = Data;
             Indexes = GetIndexes(_default_parts, Meta.Count);
+            for(int i = 0; i < Indexes.Length - 1; i++)
+            {
+                Indexes[i] += Meta.Ignore;
+            }
         }
         private int[] GetIndexes(int Parts, int Quantity)
         {
@@ -29,9 +34,20 @@ namespace inproject
             return indexes;
         }
 
-        public void KNN()
+        public void KNN(string[] Command)
         {
-            //for(int i = )
+            for(int i = 0; i< Indexes.Length-1; i++)
+            {
+                int min = 0 + Meta.Ignore;
+                int max = Meta.Count;
+                Classification Clas = new Classification();
+                Clas.LoadData(min,Indexes[i]);
+                Clas.AddData(Indexes[i + 1], max);
+                Clas.Train(Command);
+                KNearest nearest = new KNearest();
+                nearest.LoadData(Indexes[i], Indexes[i + 1]);
+                nearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), KNearest.K);
+            }
         }
     }
 }
