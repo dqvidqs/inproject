@@ -9,10 +9,9 @@ namespace inproject
     class KNearest
     {
         private static Data ValidData;
-        //private static int K;
-        //private static int IndexGr;
         public static void Valid(Points[] TrainedPoints, int[,] TrainedIndexes, int IndexGruop, int KNN)
         {
+            Console.WriteLine("K = {0}", KNN);
             ValidData = Program.Read(901, 1001);
             for (int i = 0; i < ValidData.GetQuantity(); i++)
             {
