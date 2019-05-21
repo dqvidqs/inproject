@@ -30,18 +30,24 @@ namespace inproject
                 case "load":
                     //Load(Command);
                     Clas = new Classification();
+                    Clas.LoadData(1, 901);
                     Clas.Train(Command);
-
                     break;
                 case "knn":
+                    KNearest nearest = new KNearest();
+                    nearest.LoadData(901, 1001);
                     if (Command.Length == 1)
                     {
-                        KNearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), 3);
+                        nearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), 3);
                     }
                     if (Command.Length == 2)
                     {
-                        KNearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), Convert.ToInt32(Command[1]));
+                        nearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), Convert.ToInt32(Command[1]));
                     }
+                    break;
+                case "crossk":
+                    Cross cross = new Cross(Meta);
+                    cross.KNN(Command);
                     break;
                 case "linear":
                     if (Command.Length == 1)

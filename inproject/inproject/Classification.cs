@@ -8,17 +8,27 @@ namespace inproject
 {
     class Classification
     {
-        private static Data MainData;
+        private Data MainData;
         private int GrIndex;
         private static Points[] TrainPoints;
         private static int[,] TrainIndex;
+        public void LoadData(int From, int To)
+        {
+            MainData = Program.Read(From, To);
+        }
+        public void AddData(int From, int To)
+        {
+            Data Temp = Program.Read(From, To);
+            for (int i = 0; i < Temp.GetQuantity(); i++)
+                MainData.Add(Temp.GetRawRow(i));
+        }
         public Points[] Train(string[] Command)
         {
             //command: load [grupe] [klasifikuot,klasifikuot..]
             //pvz load 1 5 6 7
             int Size = SelectIndex(Command);
             GrIndex = Convert.ToInt32(Command[1]);
-            MainData = Program.Read(1, 901);
+            
             TrainPoints = new Points[Size];
             for (int i = 0; i < Size; i++)
             {

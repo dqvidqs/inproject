@@ -10,6 +10,7 @@ namespace inproject
     {
         private class Student
         {
+            private string RawRow;
             private string[] Row = new string[8];
             private string _gender;//gender
             private string _gruop;//race/ethnicity
@@ -21,6 +22,7 @@ namespace inproject
             private int _writing;//writing score*/
             public Student(string DataString)
             {
+                RawRow = DataString;
                 try
                 {
                     string[] Row = DataString.Split(',');
@@ -45,6 +47,10 @@ namespace inproject
             public string GetRowByIndex(int i)
             {
                 return this.Row[i];
+            }
+            public string GetRaw()
+            {
+                return RawRow;
             }
         }
         private Student[] Students;
@@ -78,6 +84,10 @@ namespace inproject
         public int GetQuantity()
         {
             return Quantity;
+        }
+        public string GetRawRow(int i)
+        {
+            return Students[i].GetRaw();
         }
     }
 }

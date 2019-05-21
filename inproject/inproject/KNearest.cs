@@ -10,13 +10,19 @@ namespace inproject
     {
         private static double True = 0;
         private static double False = 0;
+        private static int _default_k = 3;
+        public  static int K { get { return _default_k; } }
         private static Data ValidData;
-        public static void Valid(Points[] TrainedPoints, int[,] TrainedIndexes, int IndexGruop, int KNN)
+        public void LoadData(int From, int To)
+        {
+            ValidData = Program.Read(From, To);
+        }
+        public void Valid(Points[] TrainedPoints, int[,] TrainedIndexes, int IndexGruop, int KNN)
         {
             True = 0;
             False = 0;
             Console.WriteLine("K = {0}", KNN);
-            ValidData = Program.Read(901, 1001);
+            //ValidData = Program.Read(901, 1001);
             for (int i = 0; i < ValidData.GetQuantity(); i++)
             {
                 ValidOne(TrainedPoints, TrainedIndexes, i, IndexGruop, KNN);
@@ -77,7 +83,7 @@ namespace inproject
             {
                 False++;
             }
-            Console.WriteLine("{0,3} Guess: {1}; Correct: {2}", index,Gruop[current], ValidData.GetDataByIndex(index, IndexGruop));
+            //Console.WriteLine("{0,3} Guess: {1}; Correct: {2}", index,Gruop[current], ValidData.GetDataByIndex(index, IndexGruop));
         }
         private static string[] Check(Points[] TrainedPoints, int Index, int K)
         {
