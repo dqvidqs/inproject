@@ -36,6 +36,7 @@ namespace inproject
 
         public void KNN(string[] Command)
         {
+            double Eff = 0;
             for(int i = 0; i< Indexes.Length-1; i++)
             {
                 int min = 0 + Meta.Ignore;
@@ -47,7 +48,9 @@ namespace inproject
                 KNearest nearest = new KNearest();
                 nearest.LoadData(Indexes[i], Indexes[i + 1]);
                 nearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), KNearest.K);
+                Eff += nearest.GetEfficiency();
             }
+            Console.WriteLine("Average: {0} %", Eff / (Indexes.Length - 1));
         }
     }
 }

@@ -122,5 +122,9 @@ namespace inproject
             }
             return true;
         }
+        public double GetEfficiency()
+        {
+            return True / (True + False) * 100;
+        }
     }
 }
