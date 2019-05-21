@@ -64,7 +64,7 @@ namespace inproject
                     current = i;
                 }
             }
-            Console.WriteLine("{0,3} Guess: {1}; Correct: {2}", index+2,Gruop[current]);
+            Console.WriteLine("{0,3} Guess: {1}; Correct: {2}", index,Gruop[current], ValidData.GetDataByIndex(index,0));
         }
         private static string[] Check(Points[] TrainedPoints, int Index)
         {

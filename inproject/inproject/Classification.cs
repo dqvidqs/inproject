@@ -11,29 +11,24 @@ namespace inproject
         private static Data MainData;
         private static Points[] TrainPoints;
         private static int[,] TrainIndex;
-        private static string[] Gruop;
+        //private static string[] Gruop;
         public Points[] Train(string[] Command)
         {
             //command: load [grupe] [klasifikuot,klasifikuot..]
             //pvz load 1 5 6 7
             int Size = SelectIndex(Command);
-            int gr = Convert.ToInt32(Command[1]);           
+            int gr = Convert.ToInt32(Command[1]);
             MainData = Program.Read(1, 901);
-            Gruop = GetGruops(gr);
+            //Gruop = GetGruops(gr);
             TrainPoints = new Points[Size];
             for (int i = 0; i < Size; i++)
             {
                 TrainPoints[i] = new Points(Convert.ToString(TrainIndex[i, 0]), Convert.ToString(TrainIndex[i, 1]), 900);
-                //TrainPoints[i] = new Points();
                 for (int j = 0; j < MainData.GetQuantity(); j++)
                 {
-                    for (int k = 0; k < Gruop.Length; k++) {
-                        if (MainData.GetDataByIndex(j, gr) == Gruop[k]) {
-                            TrainPoints[i].Coo[j].X = Convert.ToInt32(MainData.GetDataByIndex(j, TrainIndex[i, 0]));
-                            TrainPoints[i].Coo[j].Y = Convert.ToInt32(MainData.GetDataByIndex(j, TrainIndex[i, 0]));
-                            TrainPoints[i].Coo[j].Gruop = Gruop[k];
-                        }
-                    }
+                    TrainPoints[i].Coo[j].X = Convert.ToInt32(MainData.GetDataByIndex(j, TrainIndex[i, 0]));
+                    TrainPoints[i].Coo[j].Y = Convert.ToInt32(MainData.GetDataByIndex(j, TrainIndex[i, 0]));
+                    TrainPoints[i].Coo[j].Gruop = MainData.GetDataByIndex(j, gr);
                 }
             }
             return TrainPoints;
@@ -71,7 +66,7 @@ namespace inproject
             }
             return factorial;
         }
-        private static string[] GetGruops(int gr)
+        /*private static string[] GetGruops(int gr)
         {
             List<string> gruop = new List<string>();
             for (int i = 0; i < MainData.GetQuantity(); i++)
@@ -82,7 +77,7 @@ namespace inproject
                 }
             }
             return gruop.ToArray();
-        }
+        }*/
         public int[,] GetTrainedIndexes()
         {
             return TrainIndex;
