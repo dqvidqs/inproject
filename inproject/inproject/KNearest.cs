@@ -8,18 +8,24 @@ namespace inproject
 {
     class KNearest
     {
+        private static double True = 0;
+        private static double False = 0;
         private static Data ValidData;
         public static void Valid(Points[] TrainedPoints, int[,] TrainedIndexes, int IndexGruop, int KNN)
         {
+            True = 0;
+            False = 0;
             Console.WriteLine("K = {0}", KNN);
             ValidData = Program.Read(901, 1001);
             for (int i = 0; i < ValidData.GetQuantity(); i++)
             {
                 ValidOne(TrainedPoints, TrainedIndexes, i, IndexGruop, KNN);
             }
+            Console.WriteLine("True Positive : {0}%", True / (True + False) * 100);
         }
         private static void ValidOne(Points[] TrainedPoints, int[,] TrainedIndexes, int index, int IndexGruop, int K)
         {
+
             Points ValidPoint = new Points(TrainedPoints.Length);
             string[] Gruop = new string[TrainedPoints.Length * K];
             int[] Counts = new int[TrainedPoints.Length * K];
@@ -62,6 +68,14 @@ namespace inproject
                     max = Counts[i];
                     current = i;
                 }
+            }
+            if(Gruop[current] == ValidData.GetDataByIndex(index, IndexGruop))
+            {
+                True++;
+            }
+            else
+            {
+                False++;
             }
             Console.WriteLine("{0,3} Guess: {1}; Correct: {2}", index,Gruop[current], ValidData.GetDataByIndex(index, IndexGruop));
         }
