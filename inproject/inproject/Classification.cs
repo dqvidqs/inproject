@@ -8,7 +8,7 @@ namespace inproject
 {
     class Classification
     {
-        private static Data MainData;
+        private Data MainData;
         private int GrIndex;
         private static Points[] TrainPoints;
         private static int[,] TrainIndex;
