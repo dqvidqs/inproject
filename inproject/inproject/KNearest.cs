@@ -9,21 +9,21 @@ namespace inproject
     class KNearest
     {
         private static Data ValidData;
-        private static int MAX_COUNT_GUESS = 3;
-        public static void Valid(Points[] TrainedPoints, int[,] TrainedIndexes)
+        //private static int K;
+        //private static int IndexGr;
+        public static void Valid(Points[] TrainedPoints, int[,] TrainedIndexes, int IndexGruop, int KNN)
         {
             ValidData = Program.Read(901, 1001);
             for (int i = 0; i < ValidData.GetQuantity(); i++)
             {
-                ValidOne(TrainedPoints, TrainedIndexes, i);
+                ValidOne(TrainedPoints, TrainedIndexes, i, IndexGruop, KNN);
             }
-
         }
-        private static void ValidOne(Points[] TrainedPoints, int[,] TrainedIndexes, int index)
+        private static void ValidOne(Points[] TrainedPoints, int[,] TrainedIndexes, int index, int IndexGruop, int K)
         {
             Points ValidPoint = new Points(TrainedPoints.Length);
-            string[] Gruop = new string[TrainedPoints.Length * MAX_COUNT_GUESS];
-            int[] Counts = new int[TrainedPoints.Length * MAX_COUNT_GUESS];
+            string[] Gruop = new string[TrainedPoints.Length * K];
+            int[] Counts = new int[TrainedPoints.Length * K];
             for (int i = 0; i < TrainedPoints.Length; i++)
             {
                 ValidPoint.Coo[i].X = Convert.ToInt32(ValidData.GetDataByIndex(index, TrainedIndexes[i, 0]));
@@ -36,17 +36,17 @@ namespace inproject
                     double by = ValidPoint.Coo[i].Y;
                     TrainedPoints[i].Coo[j].Distance = Math.Sqrt((ax - bx) * (ax - bx) + (ay - by) * (ay - by));
                 }
-                string[] gr = Check(TrainedPoints, i);
+                string[] gr = Check(TrainedPoints, i, K);
                 int k = 0;
                 foreach (string g in gr)
                 {
-                    Gruop[k + (i * MAX_COUNT_GUESS)] = g;
+                    Gruop[k + (i * K)] = g;
                     k++;
                 }
             }
-            for (int i = 0; i < TrainedPoints.Length * MAX_COUNT_GUESS; i++)
+            for (int i = 0; i < TrainedPoints.Length * K; i++)
             {
-                for (int j = 0; j < TrainedPoints.Length * MAX_COUNT_GUESS; j++)
+                for (int j = 0; j < TrainedPoints.Length * K; j++)
                 {
                     if (Gruop[j] == Gruop[i])
                     {
@@ -56,7 +56,7 @@ namespace inproject
             }
             int max = 0;
             int current = -1;
-            for (int i = 0; i < TrainedPoints.Length * MAX_COUNT_GUESS; i++)
+            for (int i = 0; i < TrainedPoints.Length * K; i++)
             {
                 if (Counts[i] > max)
                 {
@@ -64,13 +64,13 @@ namespace inproject
                     current = i;
                 }
             }
-            Console.WriteLine("{0,3} Guess: {1}; Correct: {2}", index,Gruop[current], ValidData.GetDataByIndex(index,0));
+            Console.WriteLine("{0,3} Guess: {1}; Correct: {2}", index,Gruop[current], ValidData.GetDataByIndex(index, IndexGruop));
         }
-        private static string[] Check(Points[] TrainedPoints, int Index)
+        private static string[] Check(Points[] TrainedPoints, int Index, int K)
         {
-            int[] indexes = new int[MAX_COUNT_GUESS];
-            double[] D = new double[MAX_COUNT_GUESS];
-            string[] G = new string[MAX_COUNT_GUESS];
+            int[] indexes = new int[K];
+            double[] D = new double[K];
+            string[] G = new string[K];
             for (int i = 0; i < D.Length; i++)
             {
                 indexes[i] = -1;
@@ -89,7 +89,6 @@ namespace inproject
                     }
                 }
                 indexes[i] = index;
-                //TrainedPoints[Index].Coo[index].Distance = 999;
             }
             return G;
         }

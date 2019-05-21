@@ -11,6 +11,7 @@ namespace inproject
     class Program
     {
         static private MetaData Meta;
+        static private Classification Clas;
         static void Main(string[] args)
         {
             Setup();
@@ -24,12 +25,23 @@ namespace inproject
         private static void Options()
         {
             string[] Command = Console.ReadLine().Split(' ');
-            switch (Command[0])
+            switch (Command[0].ToLower())
             {
                 case "load":
                     //Load(Command);
-                    Classification Clas = new Classification();
-                    KNearest.Valid(Clas.Train(Command), Clas.GetTrainedIndexes());
+                    Clas = new Classification();
+                    Clas.Train(Command);
+
+                    break;
+                case "knn":
+                    if (Command.Length == 1)
+                    {
+                        KNearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), 3);
+                    }
+                    if (Command.Length == 2)
+                    {
+                        KNearest.Valid(Clas.GetPoints(), Clas.GetTrainedIndexes(), Clas.GetGruopIndex(), Convert.ToInt32(Command[1]));
+                    }
                     break;
             }
             Options();
@@ -39,15 +51,15 @@ namespace inproject
             // Data Temp = new Data();
             Data Temp = new Data(900);
             string[] Content = SplitContent();
-            if(From == -1)
+            if (From == -1)
             {
                 From = 0;
             }
-            if(To == -1)
+            if (To == -1)
             {
                 To = Content.Length;
             }
-            for(int i = From; i < To; i++)
+            for (int i = From; i < To; i++)
             {
                 try
                 {
@@ -55,7 +67,7 @@ namespace inproject
                 }
                 catch
                 {
-                Console.WriteLine("Out of Range");
+                    Console.WriteLine("Out of Range");
                 }
             }
             return Temp;

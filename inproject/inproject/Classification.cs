@@ -9,17 +9,16 @@ namespace inproject
     class Classification
     {
         private static Data MainData;
+        private int GrIndex;
         private static Points[] TrainPoints;
         private static int[,] TrainIndex;
-        //private static string[] Gruop;
         public Points[] Train(string[] Command)
         {
             //command: load [grupe] [klasifikuot,klasifikuot..]
             //pvz load 1 5 6 7
             int Size = SelectIndex(Command);
-            int gr = Convert.ToInt32(Command[1]);
+            GrIndex = Convert.ToInt32(Command[1]);
             MainData = Program.Read(1, 901);
-            //Gruop = GetGruops(gr);
             TrainPoints = new Points[Size];
             for (int i = 0; i < Size; i++)
             {
@@ -28,7 +27,7 @@ namespace inproject
                 {
                     TrainPoints[i].Coo[j].X = Convert.ToInt32(MainData.GetDataByIndex(j, TrainIndex[i, 0]));
                     TrainPoints[i].Coo[j].Y = Convert.ToInt32(MainData.GetDataByIndex(j, TrainIndex[i, 0]));
-                    TrainPoints[i].Coo[j].Gruop = MainData.GetDataByIndex(j, gr);
+                    TrainPoints[i].Coo[j].Gruop = MainData.GetDataByIndex(j, GrIndex);
                 }
             }
             return TrainPoints;
@@ -66,21 +65,17 @@ namespace inproject
             }
             return factorial;
         }
-        /*private static string[] GetGruops(int gr)
-        {
-            List<string> gruop = new List<string>();
-            for (int i = 0; i < MainData.GetQuantity(); i++)
-            {
-                if (!gruop.Contains(MainData.GetDataByIndex(i, gr)))
-                {
-                    gruop.Add(MainData.GetDataByIndex(i, gr));
-                }
-            }
-            return gruop.ToArray();
-        }*/
         public int[,] GetTrainedIndexes()
         {
             return TrainIndex;
+        }
+        public int GetGruopIndex()
+        {
+            return GrIndex;
+        }
+        public Points[] GetPoints()
+        {
+            return TrainPoints;
         }
     }
 }
