@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Classification.cs" />
     <Compile Include="Cross.cs" />
+    <Compile Include="CrossLinear.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="KNearest.cs" />
     <Compile Include="LinearRegression.cs" />

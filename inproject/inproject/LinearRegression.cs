@@ -9,38 +9,51 @@ namespace inproject
     class LinearRegression
     {
         private static Data MainData;
+        private double[] xValues;
+        private double[] yValues;
+        private static double correct = 0;
+        private static double incorrect = 0;
 
-        public static void Start(int x, int y)
+        public void LoadData(int From, int To, string[] Command)
         {
-            MainData = Program.Read(1, 901);
-            double quantity = MainData.GetQuantity();
-            var xValues = new double[MainData.GetQuantity()];
-            var yValues = new double[MainData.GetQuantity()];
+            correct = 0;
+            incorrect = 0;
+            MainData = Program.Read(From, To);
+            xValues = new double[MainData.GetQuantity()];
+            yValues = new double[MainData.GetQuantity()];
             for (int j = 0; j < MainData.GetQuantity(); j++)
             {
-                xValues[j] = Convert.ToInt32(MainData.GetDataByIndex(j, x));
-                yValues[j] = Convert.ToInt32(MainData.GetDataByIndex(j, y));
+                xValues[j] = Convert.ToInt32(MainData.GetDataByIndex(j, Convert.ToInt32(Command[1])));
+                yValues[j] = Convert.ToInt32(MainData.GetDataByIndex(j, Convert.ToInt32(Command[2])));
             }
-
+        }
+        public void Start()
+        {
+            double quantity = MainData.GetQuantity();
             double rSquared, intercept, slope;
 
             Regression(xValues, yValues, out rSquared, out intercept, out slope);
 
-            Console.WriteLine($"R-squared = {rSquared}");
-            Console.WriteLine($"Intercept = {intercept}");
-            Console.WriteLine($"Slope = {slope}");
-            double correct = 0;// teisingai atspejo, jei paklaida +- 5
+            //Console.WriteLine($"R-squared = {rSquared}");
+            //Console.WriteLine($"Intercept = {intercept}");
+            //Console.WriteLine($"Slope = {slope}");
             for (int i = 0; i < xValues.Length; i++)
             {
                 var prediction = (slope * xValues[i]) + intercept;
-                Console.WriteLine("X value : {0, 3} Y value: {1, 3} Y prediction: {2, 3}", xValues[i], yValues[i], prediction);
-                if(yValues[i] > prediction - 5  && yValues[i] < prediction + 5)
+                //Console.WriteLine("X value : {0, 3} Y value: {1, 3} Y prediction: {2, 3}", xValues[i], yValues[i], prediction);
+                if (yValues[i] > prediction - 5 && yValues[i] < prediction + 5)
                 {
                     correct++;
                 }
+                else
+                {
+                    incorrect++;
+                }
+
             }
             double percent = correct / quantity * 100;
-            Console.WriteLine("correct(+-5): {0}/{1} ({2}%)", correct, xValues.Length, Math.Round(percent, 2));
+            //Console.WriteLine("correct(+-5): {0}/{1} ({2}%)", correct, xValues.Length, Math.Round(percent, 2));
+            Console.WriteLine("True Positive : {0}%", Math.Round(percent, 2));
 
         }
         /// <summary>

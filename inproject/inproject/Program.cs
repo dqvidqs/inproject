@@ -49,15 +49,14 @@ namespace inproject
                     Cross cross = new Cross(Meta);
                     cross.KNN(Command);
                     break;
-                case "linear":
-                    if (Command.Length == 1)
-                    {
-                        LinearRegression.Start(6, 7);
-                    }
-                    if (Command.Length == 3)
-                    {
-                        LinearRegression.Start(Convert.ToInt32(Command[1]), Convert.ToInt32(Command[2]));
-                    }
+                case "linear"://pvz linear 7 6
+                    LinearRegression linear = new LinearRegression();
+                    linear.LoadData(1, 901, Command);
+                    linear.Start();
+                    break;
+                case "crosslinear":// pvz crosslinear 6 7
+                    CrossLinear cl = new CrossLinear(Meta);
+                    cl.LinearRegression(Command);
                     break;
             }
             Options();
