@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classification.cs" />
+    <Compile Include="Cross.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="KNearest.cs" />
     <Compile Include="MetaData.cs" />
