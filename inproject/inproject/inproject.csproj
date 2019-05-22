@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackProgTest.cs" />
+    <Compile Include="Backpropagation.cs" />
     <Compile Include="Classification.cs" />
     <Compile Include="Cross.cs" />
+    <Compile Include="CrossBP.cs" />
     <Compile Include="CrossLinear.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="KNearest.cs" />

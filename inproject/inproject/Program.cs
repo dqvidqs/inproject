@@ -58,6 +58,19 @@ namespace inproject
                     CrossLinear cl = new CrossLinear(Meta);
                     cl.LinearRegression(Command);
                     break;
+                case "backp":
+                    BackProgTest test = new BackProgTest();
+                    test.LoadData(1, 901, Command);
+                    test.Valid(901, 1001, Command);
+                    Console.WriteLine(test.getEFF());
+                    test.LoadData(101, 1001, Command);
+                    test.Valid(1, 101, Command);
+                    Console.WriteLine(test.getEFF());
+                    break;
+                case "crossbp":
+                    CrossBP crossBp = new CrossBP(Meta);
+                    crossBp.CrossBp(Command);
+                    break;
             }
             Options();
         }

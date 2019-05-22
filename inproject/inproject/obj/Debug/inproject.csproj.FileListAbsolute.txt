@@ -18,3 +18,10 @@ C:\Users\Linas\Documents\inproject-master\inproject\inproject\obj\Debug\inprojec
 C:\Users\Linas\Documents\inproject-master\inproject\inproject\bin\Debug\inproject.exe
 C:\Users\Linas\Documents\inproject-master\inproject\inproject\bin\Debug\inproject.pdb
 C:\Users\Linas\Documents\inproject-master\inproject\inproject\obj\Debug\inproject.csprojResolveAssemblyReference.cache
+C:\Users\Rokas\Desktop\IntelektikosProj\inproject\inproject\bin\Debug\inproject.exe.config
+C:\Users\Rokas\Desktop\IntelektikosProj\inproject\inproject\bin\Debug\inproject.exe
+C:\Users\Rokas\Desktop\IntelektikosProj\inproject\inproject\bin\Debug\inproject.pdb
+C:\Users\Rokas\Desktop\IntelektikosProj\inproject\inproject\obj\Debug\inproject.csprojAssemblyReference.cache
+C:\Users\Rokas\Desktop\IntelektikosProj\inproject\inproject\obj\Debug\inproject.csproj.CoreCompileInputs.cache
+C:\Users\Rokas\Desktop\IntelektikosProj\inproject\inproject\obj\Debug\inproject.exe
+C:\Users\Rokas\Desktop\IntelektikosProj\inproject\inproject\obj\Debug\inproject.pdb
