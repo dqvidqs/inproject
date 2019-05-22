@@ -1,7 +1,7 @@
 # inproject
 Atliekami algoritmai:
 - Backpropagation
-- k - Nearest Neighbhours
+- k - Nearest Neighbhors
 - Linear Regression
 
 We have no idea what we are doing
